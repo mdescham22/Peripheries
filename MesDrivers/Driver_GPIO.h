@@ -13,7 +13,7 @@
 
 #define In_floating		0x4
 #define	In_PullDown		0x8
-#define	In_PullUp			0x8
+#define	In_PullUp			0x1F
 #define	In_Analog			0x0
 #define	Out_Ppull			0x1
 #define	Out_OD				0x5

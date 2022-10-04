@@ -16,12 +16,10 @@ void MyGPIO_INIT(MyGPIO_Struct_TypeDef * GPIOStructPtr)
 	else if (GPIOStructPtr->GPIO == GPIOD){
 		RCC->APB2ENR |= RCC_APB2ENR_IOPDEN;
 	}
-//	if (GPIOStructPtr -> GPIO_Conf == In_PullUp){
-//			GPIOStructPtr -> GPIO -> ODR |= (0x01<<GPIOStructPtr -> GPIO_Pin);
-//		}
-//	else if(GPIOStructPtr -> GPIO_Conf == In_PullDown){
-//			GPIOStructPtr -> GPIO -> ODR &=~ (0x01<<GPIOStructPtr -> GPIO_Pin);
-//		}
+	if (GPIOStructPtr->GPIO_Conf == In_PullUp){
+		GPIOStructPtr->GPIO->ODR |= (1<<GPIOStructPtr->GPIO_Pin);
+		GPIOStructPtr->GPIO_Conf = 0x8;
+	}	
 	if (GPIOStructPtr->GPIO_Pin <= 7){
 		GPIOStructPtr -> GPIO -> CRL &= ~(0xF << (GPIOStructPtr -> GPIO_Pin)*4); 
 		GPIOStructPtr -> GPIO -> CRL |= (GPIOStructPtr -> GPIO_Conf << (GPIOStructPtr -> GPIO_Pin)*4); 
