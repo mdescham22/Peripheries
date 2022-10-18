@@ -19,5 +19,8 @@ void MyTimer_Base_Init(MyTimer_Struct_TypeDef * Timer);
 
 void MyTimer_ActiveIT(TIM_TypeDef * Timer, char Prio, void (*IT_function) (void));
 
+void MyTimer_PWM(TIM_TypeDef * Timer, char Channel);
+
+void SetCCR(TIM_TypeDef * Timer, char Channel, unsigned short CCR);
 
 #endif

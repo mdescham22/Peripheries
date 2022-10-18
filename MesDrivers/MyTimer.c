@@ -69,6 +69,59 @@ void MyTimer_ActiveIT (TIM_TypeDef * Timer, char Prio, void (*IT_function) (void
 }
 
 
+void MyTimer_PWM(TIM_TypeDef * Timer, char Channel){
+	if (Channel==1){
+		Timer->CCMR1 &= ~TIM_CCMR1_OC1M_0; //	0
+		Timer->CCMR1 |= TIM_CCMR1_OC1M_1; //	1
+		Timer->CCMR1 |= TIM_CCMR1_OC1M_2;	//	1
+		Timer->CCER |=TIM_CCER_CC1E ; // 
+		
+	}
+	else if (Channel==2){
+		Timer->CCMR1 &= ~TIM_CCMR1_OC2M_0; //	0
+		Timer->CCMR1 |= TIM_CCMR1_OC2M_1; //	1
+		Timer->CCMR1 |= TIM_CCMR1_OC2M_2;	//	1
+		Timer->CCER |=TIM_CCER_CC2E ; // 
+	}
+	else if (Channel==3){
+		Timer->CCMR2 &= ~TIM_CCMR2_OC3M_0; //	0
+		Timer->CCMR2 |= TIM_CCMR2_OC3M_1; //	1
+		Timer->CCMR2 |= TIM_CCMR2_OC3M_2;	//	1
+		Timer->CCER |=TIM_CCER_CC3E ; // 
+	}
+	else if (Channel==4){
+		Timer->CCMR2 &= ~TIM_CCMR2_OC4M_0; //	0
+		Timer->CCMR2 |= TIM_CCMR2_OC4M_1; //	1
+		Timer->CCMR2 |= TIM_CCMR2_OC4M_2;	//	1
+		Timer->CCER |=TIM_CCER_CC4E ; // 
+	}
+	//Timer->CR1 |= TIM_CR1_ARPE ;// Auto Reload
+	Timer->EGR |= TIM_EGR_UG; // Update Generation 
+	Timer->CR1 &= ~TIM_CR1_CMS_0;
+	Timer->CR1 &= ~TIM_CR1_CMS_1;// Edge aligned mode
+	Timer->CR1 &= ~TIM_CR1_DIR; // upcounter
+	if (Timer==TIM1){
+			Timer->BDTR |= TIM_BDTR_MOE;
+	}
+}
+
+void SetCCR(TIM_TypeDef * Timer, char Channel, unsigned short CCR)
+{
+	if (Channel==1){
+		Timer->CCR1 = CCR;
+	}
+	else if (Channel==2){
+		Timer->CCR2 = CCR;
+	}
+	else if (Channel==3){
+		Timer->CCR3 = CCR;
+	}
+	else if (Channel==4){
+		Timer->CCR4 = CCR;
+	}
+}	
+
+
 void TIM1_UP_IRQHandler(void)
 {
 	TIM1->SR &= ~TIM_SR_UIF;

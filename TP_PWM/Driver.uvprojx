@@ -403,6 +403,16 @@
               <FileType>5</FileType>
               <FilePath>..\MesDrivers\MyTimer.h</FilePath>
             </File>
+            <File>
+              <FileName>Driver_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MesDrivers\Driver_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MesDrivers\Driver_GPIO.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -746,7 +756,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\Include</IncludePath>
+              <IncludePath>.\Include;..\MesDrivers</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -764,7 +774,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\MesDrivers</IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -809,6 +819,16 @@
               <FileName>MyTimer.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\MesDrivers\MyTimer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MesDrivers\Driver_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>Driver_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\MesDrivers\Driver_GPIO.h</FilePath>
             </File>
           </Files>
         </Group>
